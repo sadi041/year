@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2025!</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff4500;
+        }
+        p {
+            color: #2e8b57;
+        }
+        .celebration {
+            margin-top: 30px;
+            font-size: 24px;
+        }
+        .countdown {
+            font-size: 40px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .celebration {
+                font-size: 20px;
+            }
+            .countdown {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .celebration {
+                font-size: 18px;
+            }
+            .countdown {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy New Year 2025!</h1>
+    <p>Wishing you joy, health, and prosperity in the year ahead.</p>
+    <div class="celebration">
+        <p>Let's celebrate with a virtual toast! 🥂</p>
+        <div class="countdown" id="countdown">00:00:00</div>
+    </div>
+
+    <script>
+        // Countdown timer for New Year
+        function countdownTimer() {
+            const endTime = new Date('December 31, 2024 23:59:59').getTime();
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const timeLeft = endTime - now;
+
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = 
+                    (days ? days + 'D ' : '') +
+                    ('0' + hours).slice(-2) + ':' + 
+                    ('0' + minutes).slice(-2) + ':' + 
+                    ('0' + seconds).slice(-2);
+
+                if (timeLeft < 0) {
+                    clearInterval(timer);
+                    document.getElementById('countdown').innerHTML = "Happy New Year!";
+                }
+            }, 1000);
+        }
+
+        countdownTimer();
+    </script>
+</body>
+</html>
